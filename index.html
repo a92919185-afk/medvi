@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <!-- Google Ads Policy: NoIndex on Landing Pages is safer during review, but Index is standard. -->
+    <!-- Google Ads Policy: Ensure robots follow to verify policy compliance -->
     <meta name="robots" content="index, follow">
 
     <title>Yucca Health | Prescription Weight Loss & Metabolic Support</title>
@@ -67,6 +67,7 @@
                         "background-light": "#FFFFFF",
                         "surface-light": "#F9FAFB",
                         "text-light": "#1F2937",
+                        "text-muted": "#6B7280",
                     },
                     fontFamily: {
                         display: ["Playfair Display", "serif"],
@@ -74,16 +75,10 @@
                     },
                     boxShadow: {
                         'premium': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
                     },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                    screens: {
+                        'xs': '375px', // Targeted mobile breakpoint
                     }
                 },
             },
@@ -99,32 +94,42 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        
+        /* Smooth scrolling specifically for iOS */
+        .snap-x {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Font scaling fix for very small devices */
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
     </style>
 </head>
 
-<body class="bg-background-light text-text-light font-body antialiased">
+<body class="bg-background-light text-text-light font-body antialiased selection:bg-primary selection:text-white">
 
     <!-- COMPLIANCE BAR: Mandatory for 2026 Policy -->
-    <div class="bg-primary text-white text-[10px] sm:text-xs py-2 text-center px-4 font-bold tracking-wide uppercase">
+    <div class="bg-primary text-white text-[10px] sm:text-xs py-2.5 text-center px-4 font-bold tracking-wide uppercase leading-tight">
         Prescription products require an online consultation with a licensed medical provider.
     </div>
 
     <!-- HEADER WRAPPER (Fixed Scroll) -->
-    <div class="sticky top-0 z-50">
+    <div class="sticky top-0 z-50 transition-all duration-300">
         <!-- Navbar -->
-        <nav class="bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm">
+        <nav class="bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-sm supports-[backdrop-filter]:bg-white/80">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo Placeholder (Text if image fails) -->
-                    <div class="flex items-center">
+                    <div class="flex items-center shrink-0">
                         <img src="images/medvi-logo.png" alt="Yucca Health Logo" class="h-8 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                         <span class="hidden font-display font-bold text-2xl text-primary">Yucca<span class="text-gray-800">Health</span></span>
                     </div>
                     
                     <!-- Trust Indicator -->
-                    <div class="flex items-center gap-1 bg-green-50 px-3 py-1 rounded-full border border-green-100">
+                    <div class="flex items-center gap-1.5 bg-green-50 px-3 py-1.5 rounded-full border border-green-100">
                         <span class="material-icons-outlined text-primary text-xs">verified_user</span>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-primary">HIPAA Compliant</span>
+                        <span class="text-[9px] xs:text-[10px] font-bold uppercase tracking-widest text-primary whitespace-nowrap">HIPAA Compliant</span>
                     </div>
                 </div>
             </div>
@@ -134,62 +139,65 @@
     <!-- MAIN CONTENT WRAPPER -->
     <main>
         <!-- HERO SECTION -->
-        <header class="relative overflow-hidden bg-gradient-to-br from-green-50 to-white py-16 lg:py-20">
+        <header class="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-white py-12 lg:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
                     <!-- Left Side: Content -->
-                    <div class="text-center lg:text-left">
-                        <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">
+                    <div class="text-center lg:text-left order-2 lg:order-1">
+                        <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight mb-4 lg:mb-6 text-gray-900">
                             Prescription <span class="text-primary">Weight Loss</span>,<br>
                             Backed by Real Doctors
                         </h1>
 
-                        <p class="text-base text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
-                            <strong>Doctor-Guided. Science-Based. Built for Real Results.</strong><br>
+                        <p class="text-sm sm:text-base text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            <strong class="text-gray-900 block mb-2">Doctor-Guided. Science-Based. Built for Real Results.</strong>
                             Get access to licensed medical providers who specialize in metabolic health and personalized weight management programs. If clinically appropriate, prescription GLP-1 treatment may be recommended as part of your customized care plan.
                         </p>
 
-                        <!-- Product Image Mobile -->
-                        <div class="lg:hidden flex justify-center relative mb-10 px-4">
-                            <div class="relative w-full max-w-[390px]">
+                        <!-- Product Image Mobile (Optimized position) -->
+                        <div class="lg:hidden flex flex-col items-center justify-center relative mb-8 -mt-2 px-4">
+                            <div class="relative w-full max-w-[320px] sm:max-w-[390px]">
                                 <img src="images/medvi.png" alt="Yucca Health Personalized Metabolic Plan"
-                                    class="relative z-10 w-full h-auto drop-shadow-2xl"
+                                    class="relative z-10 w-full h-auto drop-shadow-xl"
                                     onerror="this.src='https://placehold.co/400x400/e6f4f1/2c8566?text=Clinical+Kit'">
                             </div>
-                            <p class="absolute bottom-[-20px] text-[9px] text-gray-400 italic">*Prescription medication shown. Requires medical consultation.</p>
+                            <p class="mt-3 text-[9px] text-gray-400 italic max-w-xs leading-tight">*Prescription medication shown. Requires medical consultation.</p>
                         </div>
 
                         <!-- CTA (Safe Link) -->
-                        <a href="#shipping-selection"
-                            class="inline-flex w-full sm:w-auto items-center justify-center bg-black text-white font-bold text-xs py-4 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 mb-10">
-                            Check Eligibility
-                            <span class="material-icons-outlined ml-2 text-sm">arrow_forward</span>
-                        </a>
+                        <div class="flex flex-col items-center lg:items-start gap-3 mb-10">
+                            <a href="#shipping-selection"
+                                class="inline-flex w-full sm:w-auto items-center justify-center bg-gray-900 text-white font-bold text-sm py-4 px-8 rounded-full shadow-lg hover:bg-black hover:shadow-xl transform transition-all duration-200 active:scale-95">
+                                Check Eligibility
+                                <span class="material-icons-outlined ml-2 text-lg">arrow_forward</span>
+                            </a>
+                            <p class="text-[10px] text-gray-500 font-medium">No insurance required • FSA/HSA Accepted</p>
+                        </div>
 
                         <!-- Trust Rating -->
-                        <div class="flex items-center justify-center lg:justify-start space-x-2 mb-10">
-                            <div class="flex space-x-1">
+                        <div class="flex items-center justify-center lg:justify-start space-x-2">
+                            <div class="flex space-x-0.5">
                                 <!-- Star Icons -->
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
                             </div>
-                            <span class="font-extrabold text-[#191919] text-xl tracking-tight">Excellent</span>
+                            <span class="font-bold text-[#191919] text-sm lg:text-xl tracking-tight">Excellent 4.9/5.0</span>
                         </div>
                     </div>
 
                     <!-- Right Side: Product Image (Desktop) -->
-                    <div class="hidden lg:flex justify-center relative">
-                        <div class="relative w-full max-w-2xl">
-                            <div class="absolute inset-0 bg-primary/10 blur-3xl rounded-full transform scale-90"></div>
+                    <div class="hidden lg:flex justify-center relative order-1 lg:order-2">
+                        <div class="relative w-full max-w-xl xl:max-w-2xl">
+                            <div class="absolute inset-0 bg-primary/5 blur-3xl rounded-full transform scale-90 translate-y-10"></div>
                             <img src="images/medvi.png" alt="Yucca Health Personalized Metabolic Plan"
                                 class="relative z-10 w-full h-auto transform hover:scale-105 transition-transform duration-700 drop-shadow-2xl"
                                 onerror="this.src='https://placehold.co/600x600/e6f4f1/2c8566?text=Clinical+Kit'">
                             <!-- Compliance Caption -->
-                            <p class="absolute bottom-[-30px] w-full text-center text-[10px] text-gray-400 italic">*Prescription medication shown. Requires medical consultation.</p>
+                            <p class="absolute bottom-[-40px] w-full text-center text-[10px] text-gray-400 italic">*Prescription medication shown. Requires medical consultation.</p>
                         </div>
                     </div>
                 </div>
@@ -199,36 +207,36 @@
         <!-- DISCLAIMER BANNER (Google Ads Requirement) -->
         <section class="bg-gray-50 border-y border-gray-200 py-3">
             <div class="max-w-7xl mx-auto px-4 text-center">
-                <p class="text-[10px] text-gray-500 leading-tight max-w-4xl mx-auto">
+                <p class="text-[10px] text-gray-500 leading-normal max-w-4xl mx-auto">
                     *Individual results vary. Access to prescription medication is subject to a medical evaluation by a licensed provider. Not all patients will qualify. Medical services are provided by independent physician groups.
                 </p>
             </div>
         </section>
 
         <!-- COUNTRY SELECTION SECTION -->
-        <section id="shipping-selection" class="py-20 bg-white border-t border-gray-100 scroll-mt-20">
+        <section id="shipping-selection" class="py-16 lg:py-24 bg-white border-t border-gray-100 scroll-mt-20">
             <article class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <!-- Header -->
-                <div class="text-center mb-16">
-                    <p class="text-xs font-bold text-primary uppercase tracking-widest mb-4">Certified Provider Network</p>
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-6 leading-tight">
+                <div class="text-center mb-10 lg:mb-16">
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-primary text-[10px] font-bold uppercase tracking-widest mb-4">Certified Provider Network</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-4 leading-tight">
                         Select Your Region
                     </h2>
-                    <p class="text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                    <p class="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
                         Access to specialized medical oversight is available in the following primary regions. Choose your location to begin your clinical evaluation.
                     </p>
                 </div>
 
                 <!-- Country Cards Grid -->
                 <!-- SAFETY CHANGE: Replaced direct affiliate hrefs with onClick handler to simulate internal flow -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8 max-w-3xl mx-auto">
 
                     <!-- USA -->
                     <div onclick="handleRegionClick('USA')"
-                        class="cursor-pointer group bg-white rounded-2xl border-2 border-gray-200 hover:border-primary p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                        class="cursor-pointer group bg-white rounded-2xl border-2 border-gray-100 hover:border-primary p-6 lg:p-8 text-center transition-all duration-300 active:scale-[0.98] hover:-translate-y-1 hover:shadow-xl">
                         <div class="flex justify-center mb-6">
-                            <div class="w-full max-w-[180px] h-28 rounded-xl overflow-hidden border-2 border-gray-100 group-hover:border-primary/30 transition-all shadow-sm">
+                            <div class="w-[120px] lg:w-[160px] h-[70px] lg:h-[90px] rounded-lg overflow-hidden border border-gray-100 group-hover:border-primary/20 transition-all shadow-sm">
                                 <svg class="w-full h-full" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="60" height="30" fill="#B22234" />
                                     <path d="M0,3.46h60M0,6.92h60M0,10.38h60M0,13.84h60M0,17.3h60M0,20.76h60M0,24.22h60M0,27.68h60" stroke="#fff" stroke-width="2.31" />
@@ -241,81 +249,80 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors">UNITED STATES</h3>
-                        <p class="text-xs text-primary font-bold uppercase tracking-widest">Licensed medical providers available nationwide.</p>
-                        <div class="mt-6 inline-flex items-center text-sm text-gray-500 group-hover:text-primary transition-colors">
-                            <span class="font-semibold">Start Visit</span>
-                            <span class="material-icons-outlined ml-1 text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        <h3 class="font-bold text-lg lg:text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors">UNITED STATES</h3>
+                        <p class="text-xs text-primary font-bold uppercase tracking-widest mb-6 min-h-[1.5em]">Licensed medical providers available nationwide.</p>
+                        <div class="w-full py-3 rounded-xl bg-gray-50 text-gray-900 font-bold text-sm group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                            Start Visit
+                            <span class="material-icons-outlined text-lg">arrow_forward</span>
                         </div>
                     </div>
 
                     <!-- GLOBAL -->
                     <div onclick="handleRegionClick('Global')"
-                        class="cursor-pointer group bg-white rounded-2xl border-2 border-gray-200 hover:border-primary p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                        class="cursor-pointer group bg-white rounded-2xl border-2 border-gray-100 hover:border-primary p-6 lg:p-8 text-center transition-all duration-300 active:scale-[0.98] hover:-translate-y-1 hover:shadow-xl">
                         <div class="flex justify-center mb-6">
-                            <div class="w-full max-w-[180px] h-28 rounded-xl overflow-hidden border-2 border-gray-100 group-hover:border-primary/30 transition-all shadow-sm bg-blue-50">
-                                <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <div class="w-[120px] lg:w-[160px] h-[70px] lg:h-[90px] rounded-lg overflow-hidden border border-gray-100 group-hover:border-primary/20 transition-all shadow-sm bg-blue-50/50">
+                                <svg class="w-full h-full p-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="50" cy="50" r="40" fill="#E6F2FF" />
-                                    <!-- Simple globe grid lines -->
                                     <path d="M50 10 A 40 40 0 0 1 50 90 A 40 40 0 0 1 50 10 M10 50 L90 50" stroke="#4DA3FF" stroke-width="2" fill="none" />
                                     <ellipse cx="50" cy="50" rx="20" ry="40" stroke="#4DA3FF" stroke-width="2" fill="none" />
                                     <circle cx="50" cy="50" r="40" stroke="#2C8566" stroke-width="3" fill="none" />
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors">GLOBAL</h3>
-                        <p class="text-xs text-primary font-bold uppercase tracking-widest">International access available where permitted.</p>
-                        <div class="mt-6 inline-flex items-center text-sm text-gray-500 group-hover:text-primary transition-colors">
-                            <span class="font-semibold">Start Visit</span>
-                            <span class="material-icons-outlined ml-1 text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        <h3 class="font-bold text-lg lg:text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors">GLOBAL</h3>
+                        <p class="text-xs text-primary font-bold uppercase tracking-widest mb-6 min-h-[1.5em]">International access available where permitted.</p>
+                        <div class="w-full py-3 rounded-xl bg-gray-50 text-gray-900 font-bold text-sm group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                            Start Visit
+                            <span class="material-icons-outlined text-lg">arrow_forward</span>
                         </div>
                     </div>
 
                 </div>
 
                 <!-- Trust Footer -->
-                <div class="mt-12 text-center">
-                    <p class="text-xs text-gray-400 italic">All medications are dispensed through FDA-registered 503B compounding pharmacies under full medical oversight.</p>
+                <div class="mt-10 lg:mt-12 text-center">
+                    <p class="text-[10px] sm:text-xs text-gray-400 italic max-w-xl mx-auto">All medications are dispensed through FDA-registered 503B compounding pharmacies under full medical oversight.</p>
                 </div>
 
             </article>
         </section>
 
         <!-- TRUST LOGOS -->
-        <section class="py-8 bg-surface-light border-t border-gray-100">
+        <section class="py-8 bg-surface-light border-t border-gray-100 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 text-center">
-                <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">As seen in</p>
-                <div class="flex flex-wrap justify-center items-center gap-8 opacity-40 grayscale">
-                    <span class="font-serif italic font-bold text-xl">Variety</span>
-                    <span class="font-serif font-bold text-xl">PUREWOW</span>
-                    <span class="font-bold text-xl">US Weekly</span>
-                    <span class="font-sans font-bold text-lg">Woman'sWorld</span>
-                    <span class="font-sans font-bold text-lg">Bustle</span>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-6">As seen in</p>
+                <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 opacity-40 grayscale">
+                    <span class="font-serif italic font-bold text-lg sm:text-xl">Variety</span>
+                    <span class="font-serif font-bold text-lg sm:text-xl">PUREWOW</span>
+                    <span class="font-bold text-lg sm:text-xl">US Weekly</span>
+                    <span class="font-sans font-bold text-base sm:text-lg">Woman'sWorld</span>
+                    <span class="font-sans font-bold text-base sm:text-lg">Bustle</span>
                 </div>
             </div>
         </section>
 
         <!-- SOCIAL PROOF SECTION -->
-        <section class="py-24 bg-gradient-to-b from-white to-green-50/30">
+        <section class="py-16 lg:py-24 bg-gradient-to-b from-white to-green-50/30">
             <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-20">
-                    <h2 class="font-display font-bold text-4xl md:text-5xl mb-8">
+                <div class="text-center mb-12 lg:mb-20">
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl mb-6 lg:mb-8 text-gray-900">
                         Why Patients Choose Our <br class="hidden md:block"><span class="text-primary">Medical Oversight</span>
                     </h2>
 
                     <div class="flex flex-col items-center justify-center space-y-4">
                         <div class="flex items-center gap-2">
-                             <div class="flex space-x-1">
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
-                                <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center rounded-sm"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                             <div class="flex space-x-0.5">
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
+                                <div class="w-5 h-5 lg:w-6 lg:h-6 bg-[#00b67a] flex items-center justify-center rounded-[2px]"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 0L8.571 5.093H13.659L9.544 8.242L11.115 13.335L7 10.186L2.885 13.335L4.456 8.242L0.341 5.093H5.429L7 0Z" fill="white" /></svg></div>
                             </div>
-                            <span class="font-extrabold text-[#191919] text-xl tracking-tight">Excellent</span>
+                            <span class="font-extrabold text-[#191919] text-lg lg:text-xl tracking-tight">Excellent</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="text-3xl font-extrabold text-gray-900">4.9 / 5.0</span>
+                            <span class="text-2xl lg:text-3xl font-extrabold text-gray-900">4.9 / 5.0</span>
                             <div class="flex items-center gap-1.5 px-3 py-1 bg-green-50 rounded-full border border-green-100">
                                 <span class="material-icons-outlined text-[#00b67a] text-xs">verified_user</span>
                                 <span class="text-[9px] font-bold uppercase tracking-widest text-primary">Verified Reviews</span>
@@ -324,71 +331,77 @@
                     </div>
                 </div>
 
-                <!-- Testimonials Grid -->
+                <!-- Testimonials Grid with Better Mobile Snap -->
                 <div class="relative group/slider">
-                    <div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-x-auto pb-12 snap-x px-4 -mx-4 hide-scrollbar">
+                    <div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 overflow-x-auto pb-8 lg:pb-12 snap-x snap-mandatory px-4 -mx-4 md:mx-0 md:px-0 hide-scrollbar scroll-pl-4">
 
                         <!-- Testimonial 1 -->
-                        <div class="group bg-white rounded-3xl p-10 border border-gray-100 shadow-premium hover:shadow-2xl hover:border-primary/10 transition-all duration-500 min-w-[88%] sm:min-w-[450px] md:min-w-0 snap-center relative">
-                            <div class="absolute top-8 right-10 text-primary/5 group-hover:text-primary/10 transition-colors">
-                                <span class="material-icons-outlined text-7xl">format_quote</span>
+                        <div class="snap-center shrink-0 w-[85vw] sm:w-auto bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-10 border border-gray-100 shadow-card hover:shadow-xl transition-all duration-300 relative h-full flex flex-col justify-between">
+                            <div>
+                                <div class="absolute top-6 right-6 lg:top-8 lg:right-10 text-primary/5">
+                                    <span class="material-icons-outlined text-5xl lg:text-7xl">format_quote</span>
+                                </div>
+                                <p class="text-gray-600 text-sm lg:text-lg leading-relaxed mb-6 italic relative z-10">
+                                    "The medical team helped me finally understand my <span class="font-bold text-gray-900 underline decoration-primary/20">metabolism</span>. My doctor customized a plan that fits my life, and I feel in control again."
+                                </p>
                             </div>
-                            <p class="text-gray-600 leading-relaxed mb-8 italic relative z-10 text-lg">
-                                "The medical team helped me finally understand my <span class="font-bold text-gray-900 underline decoration-primary/20">metabolism</span>. My doctor customized a plan that fits my life, and I feel in control again."
-                            </p>
-                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
-                                <img src="images/testimonial_sarah.webp" alt="Sarah M." class="w-14 h-14 rounded-full border-2 border-primary/20 group-hover:border-primary object-cover transition-colors" onerror="this.src='https://placehold.co/100x100/f3f4f6/9ca3af?text=SM'">
+                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <img src="images/testimonial_sarah.webp" alt="Sarah M." class="w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-primary/20 object-cover" onerror="this.src='https://placehold.co/100x100/f3f4f6/9ca3af?text=SM'">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 tracking-tight">Sarah M., 46</h4>
+                                    <h4 class="font-bold text-gray-900 tracking-tight text-sm lg:text-base">Sarah M., 46</h4>
                                     <p class="text-[10px] text-primary font-extrabold uppercase tracking-widest">Verified Patient</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Testimonial 2 -->
-                        <div class="group bg-white rounded-3xl p-10 border border-gray-100 shadow-premium hover:shadow-xl transition-all min-w-[88%] sm:min-w-[450px] md:min-w-0 snap-center relative">
-                            <div class="absolute top-8 right-10 text-primary/5 group-hover:text-primary/10 transition-colors">
-                                <span class="material-icons-outlined text-7xl">format_quote</span>
+                        <div class="snap-center shrink-0 w-[85vw] sm:w-auto bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-10 border border-gray-100 shadow-card hover:shadow-xl transition-all duration-300 relative h-full flex flex-col justify-between">
+                            <div>
+                                <div class="absolute top-6 right-6 lg:top-8 lg:right-10 text-primary/5">
+                                    <span class="material-icons-outlined text-5xl lg:text-7xl">format_quote</span>
+                                </div>
+                                <p class="text-gray-600 text-sm lg:text-lg leading-relaxed mb-6 italic relative z-10">
+                                    "Having a <span class="font-bold text-gray-900">board-certified physician</span> guide me made all the difference. This isn’t a diet — it’s real medical support."
+                                </p>
                             </div>
-                            <p class="text-gray-600 leading-relaxed mb-8 italic relative z-10">
-                                "Having a <span class="font-bold text-gray-900">board-certified physician</span> guide me made all the difference. This isn’t a diet — it’s real medical support."
-                            </p>
-                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
-                                <img src="images/testimonial_michael.webp" alt="Michael R." class="w-14 h-14 rounded-full border-2 border-primary object-cover" onerror="this.src='https://placehold.co/100x100/f3f4f6/9ca3af?text=MR'">
+                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <img src="images/testimonial_michael.webp" alt="Michael R." class="w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-primary object-cover" onerror="this.src='https://placehold.co/100x100/f3f4f6/9ca3af?text=MR'">
                                 <div>
-                                    <h4 class="font-bold text-gray-900">Michael R., 44</h4>
-                                    <p class="text-xs text-primary font-bold uppercase tracking-wider">Verified Patient</p>
+                                    <h4 class="font-bold text-gray-900 text-sm lg:text-base">Michael R., 44</h4>
+                                    <p class="text-[10px] text-primary font-bold uppercase tracking-wider">Verified Patient</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Testimonial 3 -->
-                        <div class="group bg-white rounded-3xl p-10 border border-gray-100 shadow-premium hover:shadow-xl transition-all min-w-[88%] sm:min-w-[450px] md:min-w-0 snap-center relative">
-                            <div class="absolute top-8 right-10 text-primary/5 group-hover:text-primary/10 transition-colors">
-                                <span class="material-icons-outlined text-7xl">format_quote</span>
+                        <div class="snap-center shrink-0 w-[85vw] sm:w-auto bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-10 border border-gray-100 shadow-card hover:shadow-xl transition-all duration-300 relative h-full flex flex-col justify-between">
+                            <div>
+                                <div class="absolute top-6 right-6 lg:top-8 lg:right-10 text-primary/5">
+                                    <span class="material-icons-outlined text-5xl lg:text-7xl">format_quote</span>
+                                </div>
+                                <p class="text-gray-600 text-sm lg:text-lg leading-relaxed mb-6 italic relative z-10">
+                                    "No waiting rooms. No guesswork. Just <span class="font-bold text-gray-900">real medical guidance</span> and a plan that works."
+                                </p>
                             </div>
-                            <p class="text-gray-600 leading-relaxed mb-8 italic relative z-10">
-                                "No waiting rooms. No guesswork. Just <span class="font-bold text-gray-900">real medical guidance</span> and a plan that works."
-                            </p>
-                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
-                                <img src="images/testimonial_jennifer.webp" alt="Jennifer L." class="w-14 h-14 rounded-full border-2 border-primary object-cover" onerror="this.src='https://placehold.co/100x100/f3f4f6/9ca3af?text=JL'">
+                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <img src="images/testimonial_jennifer.webp" alt="Jennifer L." class="w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-primary object-cover" onerror="this.src='https://placehold.co/100x100/f3f4f6/9ca3af?text=JL'">
                                 <div>
-                                    <h4 class="font-bold text-gray-900">Jennifer L., 45</h4>
-                                    <p class="text-xs text-primary font-bold uppercase tracking-wider">Verified Patient</p>
+                                    <h4 class="font-bold text-gray-900 text-sm lg:text-base">Jennifer L., 45</h4>
+                                    <p class="text-[10px] text-primary font-bold uppercase tracking-wider">Verified Patient</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Swipe Hint -->
-                    <div class="flex md:hidden justify-center items-center gap-2 mt-4 text-gray-400">
+                    <div class="flex md:hidden justify-center items-center gap-2 mt-2 text-gray-400">
                         <span class="material-icons-outlined text-sm animate-pulse">touch_app</span>
                         <span class="text-[10px] font-bold uppercase tracking-widest">Swipe to see more</span>
                     </div>
 
                     <!-- Testimonial Disclaimer -->
                     <div class="mt-8 text-center">
-                        <p class="text-[10px] text-gray-400 italic max-w-2xl mx-auto">
+                        <p class="text-[10px] text-gray-400 italic max-w-2xl mx-auto px-4">
                             *Results vary by individual. Weight loss results are based on a combination of treatment and lifestyle changes such as diet and exercise. Consult with your doctor.
                         </p>
                     </div>
@@ -397,69 +410,69 @@
         </section>
 
         <!-- FAQ SECTION -->
-        <section class="py-24 bg-surface-light">
+        <section class="py-16 lg:py-24 bg-surface-light border-t border-gray-100">
             <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold font-display tracking-tight">Common Questions</h2>
+                <div class="text-center mb-12 lg:mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold font-display tracking-tight text-gray-900">Common Questions</h2>
                     <p class="text-gray-400 font-bold text-xs uppercase tracking-widest mt-4">Everything you need to know about Yucca Health</p>
                 </div>
 
                 <div class="space-y-4">
                     <!-- FAQ 1 -->
-                    <details class="group bg-white rounded-2xl shadow-premium border border-gray-100 overflow-hidden transition-all duration-300">
-                        <summary class="flex justify-between items-center font-bold cursor-pointer p-7 text-gray-900 hover:text-primary transition-colors">
-                            <h3 class="text-lg pr-4 tracking-tight">Do I need a prescription?</h3>
-                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white transition-all">
+                    <details class="group bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden transition-all duration-300">
+                        <summary class="flex justify-between items-center font-bold cursor-pointer p-6 lg:p-7 text-gray-900 hover:text-primary transition-colors select-none">
+                            <h3 class="text-base lg:text-lg pr-4 tracking-tight">Do I need a prescription?</h3>
+                            <div class="shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white transition-all">
                                 <span class="material-icons-outlined text-xl group-open:rotate-180 transition-transform">expand_more</span>
                             </div>
                         </summary>
-                        <div class="text-gray-600 px-7 pb-8 pt-0 leading-relaxed">
-                            <div class="pt-4 border-t border-gray-50 text-base">
+                        <div class="text-gray-600 px-6 lg:px-7 pb-6 lg:pb-8 pt-0 leading-relaxed">
+                            <div class="pt-4 border-t border-gray-50 text-sm lg:text-base">
                                 Yes. Prescription treatment requires evaluation and approval by a licensed medical provider.
                             </div>
                         </div>
                     </details>
 
                     <!-- FAQ 2 -->
-                    <details class="group bg-white rounded-2xl shadow-sm border overflow-hidden">
-                        <summary class="flex justify-between items-center font-bold cursor-pointer p-7 text-gray-900 hover:text-primary">
-                            <h3 class="text-lg pr-4">Who is eligible?</h3>
-                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white">
+                    <details class="group bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden">
+                        <summary class="flex justify-between items-center font-bold cursor-pointer p-6 lg:p-7 text-gray-900 hover:text-primary select-none">
+                            <h3 class="text-base lg:text-lg pr-4">Who is eligible?</h3>
+                            <div class="shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white">
                                 <span class="material-icons-outlined text-xl group-open:rotate-180 transition-transform">expand_more</span>
                             </div>
                         </summary>
-                        <div class="text-gray-600 px-7 pb-8 pt-0 leading-relaxed">
-                            <div class="pt-4 border-t border-gray-50">
+                        <div class="text-gray-600 px-6 lg:px-7 pb-6 lg:pb-8 pt-0 leading-relaxed">
+                            <div class="pt-4 border-t border-gray-50 text-sm lg:text-base">
                                 Eligibility depends on medical history, BMI, and overall health. Not all patients qualify.
                             </div>
                         </div>
                     </details>
 
                     <!-- FAQ 3 -->
-                    <details class="group bg-white rounded-2xl shadow-sm border overflow-hidden">
-                        <summary class="flex justify-between items-center font-bold cursor-pointer p-7 text-gray-900 hover:text-primary">
-                            <h3 class="text-lg pr-4">Is insurance required?</h3>
-                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white">
+                    <details class="group bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden">
+                        <summary class="flex justify-between items-center font-bold cursor-pointer p-6 lg:p-7 text-gray-900 hover:text-primary select-none">
+                            <h3 class="text-base lg:text-lg pr-4">Is insurance required?</h3>
+                            <div class="shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white">
                                 <span class="material-icons-outlined text-xl group-open:rotate-180 transition-transform">expand_more</span>
                             </div>
                         </summary>
-                        <div class="text-gray-600 px-7 pb-8 pt-0 leading-relaxed">
-                            <div class="pt-4 border-t border-gray-50">
+                        <div class="text-gray-600 px-6 lg:px-7 pb-6 lg:pb-8 pt-0 leading-relaxed">
+                            <div class="pt-4 border-t border-gray-50 text-sm lg:text-base">
                                 No. Insurance is not required. Coverage eligibility varies.
                             </div>
                         </div>
                     </details>
                     
                      <!-- FAQ 4 -->
-                    <details class="group bg-white rounded-2xl shadow-sm border overflow-hidden">
-                        <summary class="flex justify-between items-center font-bold cursor-pointer p-7 text-gray-900 hover:text-primary">
-                            <span class="text-lg pr-4">Are there risks?</span>
-                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white">
+                    <details class="group bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden">
+                        <summary class="flex justify-between items-center font-bold cursor-pointer p-6 lg:p-7 text-gray-900 hover:text-primary select-none">
+                            <span class="text-base lg:text-lg pr-4">Are there risks?</span>
+                            <div class="shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-open:bg-primary group-open:text-white">
                                 <span class="material-icons-outlined text-xl group-open:rotate-180 transition-transform">expand_more</span>
                             </div>
                         </summary>
-                        <div class="text-gray-600 px-7 pb-8 pt-0 leading-relaxed">
-                            <div class="pt-4 border-t border-gray-50">
+                        <div class="text-gray-600 px-6 lg:px-7 pb-6 lg:pb-8 pt-0 leading-relaxed">
+                            <div class="pt-4 border-t border-gray-50 text-sm lg:text-base">
                                 <p>All prescription medications carry potential risks. Your provider will review safety considerations during your consultation.</p>
                             </div>
                         </div>
@@ -470,7 +483,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-900 pt-20 pb-12">
+    <footer class="bg-gray-900 pt-16 lg:pt-20 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col items-center">
                 <!-- Logo -->
@@ -480,25 +493,25 @@
                 </div>
 
                 <!-- Compliance Links -->
-                <div class="flex flex-col md:flex-row justify-center items-center gap-y-4 md:gap-y-0 md:gap-x-8 mb-14">
-                    <button onclick="openModal('privacy')" class="text-xs font-bold text-gray-400 uppercase tracking-widest py-2 md:py-0 hover:text-white">Privacy Policy</button>
-                    <button onclick="openModal('terms')" class="text-xs font-bold text-gray-400 uppercase tracking-widest py-2 md:py-0 hover:text-white">Terms of Service</button>
-                    <button onclick="openModal('contact')" class="text-xs font-bold text-gray-400 uppercase tracking-widest py-2 md:py-0 hover:text-white">Contact</button>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-y-4 md:gap-y-0 md:gap-x-8 mb-12">
+                    <button onclick="openModal('privacy')" class="text-xs font-bold text-gray-400 uppercase tracking-widest py-2 md:py-0 hover:text-white transition-colors">Privacy Policy</button>
+                    <button onclick="openModal('terms')" class="text-xs font-bold text-gray-400 uppercase tracking-widest py-2 md:py-0 hover:text-white transition-colors">Terms of Service</button>
+                    <button onclick="openModal('contact')" class="text-xs font-bold text-gray-400 uppercase tracking-widest py-2 md:py-0 hover:text-white transition-colors">Contact</button>
                 </div>
 
                 <!-- Legal Block -->
                 <div class="max-w-4xl w-full text-center space-y-8 opacity-40">
                     <div class="space-y-3 border-t border-gray-800 pt-8">
                         <p class="text-xs font-black text-gray-400 uppercase tracking-widest">Medical Disclaimer</p>
-                        <p class="text-[10px] leading-relaxed text-gray-400 max-w-3xl mx-auto mb-2">
+                        <p class="text-[10px] leading-relaxed text-gray-400 max-w-3xl mx-auto mb-2 px-4">
                             Yucca Health connects patients with independent, board-certified physicians who may recommend compounded formulations prepared by FDA-registered 503B compounding pharmacies. Compounded medications are not FDA-approved and have not undergone FDA review for safety or efficacy.
                         </p>
-                        <p class="text-[10px] leading-relaxed text-gray-400 max-w-3xl mx-auto">
+                        <p class="text-[10px] leading-relaxed text-gray-400 max-w-3xl mx-auto px-4">
                             Individual results vary. Weight loss outcomes depend on adherence to treatment, lifestyle changes, and individual metabolic factors. Always consult your physician before starting any treatment.
                         </p>
                     </div>
 
-                    <div class="pt-6 space-y-2">
+                    <div class="pt-4 space-y-2">
                         <p class="text-[10px] text-gray-400 tracking-widest uppercase">
                             © 2026 Yucca Global Distribution. All Rights Reserved.
                         </p>
@@ -510,15 +523,15 @@
 
     <!-- MODAL SYSTEM -->
     <div id="legalModal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
-        <div class="flex items-center justify-center min-h-screen px-4">
-            <div onclick="closeModal()" class="fixed inset-0 bg-gray-900/90 backdrop-blur-sm"></div>
-            <div class="relative inline-block bg-white rounded-2xl shadow-2xl sm:max-w-3xl w-full">
-                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900">
+        <div class="flex items-center justify-center min-h-screen px-4 py-8">
+            <div onclick="closeModal()" class="fixed inset-0 bg-gray-900/90 backdrop-blur-sm transition-opacity"></div>
+            <div class="relative inline-block bg-white rounded-2xl shadow-2xl w-full max-w-3xl transform transition-all">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 p-2">
                     <span class="material-icons-outlined">close</span>
                 </button>
-                <div id="modalContent" class="px-6 py-8 max-h-[80vh] overflow-y-auto"></div>
-                <div class="bg-gray-50 px-6 py-4 flex justify-end border-t">
-                    <button onclick="closeModal()" class="bg-gray-900 text-white px-6 py-2 rounded-full text-sm font-bold">Close</button>
+                <div id="modalContent" class="px-6 py-8 sm:px-8 max-h-[80vh] overflow-y-auto"></div>
+                <div class="bg-gray-50 px-6 py-4 flex justify-end border-t rounded-b-2xl">
+                    <button onclick="closeModal()" class="bg-gray-900 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:bg-black transition-colors">Close</button>
                 </div>
             </div>
         </div>
@@ -529,21 +542,22 @@
         const modalData = {
             privacy: `
                 <h2 class="text-2xl font-bold font-display text-gray-900 mb-6">Privacy Policy</h2>
-                <p class="mb-4 text-sm text-gray-600">This Privacy Policy describes how your personal information is collected, used, and shared. We are committed to protecting your medical data according to HIPAA standards.</p>
+                <p class="mb-4 text-sm text-gray-600 leading-relaxed">This Privacy Policy describes how your personal information is collected, used, and shared. We are committed to protecting your medical data according to HIPAA standards.</p>
                 <h3 class="text-lg font-bold mt-6 mb-2">Data Collection</h3>
-                <p class="text-sm text-gray-600">We collect information necessary to facilitate your medical consultation and order fulfillment. This includes contact details and medical history.</p>
+                <p class="text-sm text-gray-600 leading-relaxed">We collect information necessary to facilitate your medical consultation and order fulfillment. This includes contact details and medical history.</p>
             `,
             terms: `
                 <h2 class="text-2xl font-bold font-display text-gray-900 mb-6">Terms of Service</h2>
-                <p class="mb-4 text-sm text-gray-600">By using Yucca Health services, you agree that we are a technology platform connecting you with independent medical providers.</p>
+                <p class="mb-4 text-sm text-gray-600 leading-relaxed">By using Yucca Health services, you agree that we are a technology platform connecting you with independent medical providers.</p>
                 <h3 class="text-lg font-bold mt-6 mb-2">Medical Discretion</h3>
-                <p class="text-sm text-gray-600">All treatment decisions are at the sole discretion of your provider. Payment for the program does not guarantee a prescription.</p>
+                <p class="text-sm text-gray-600 leading-relaxed">All treatment decisions are at the sole discretion of your provider. Payment for the program does not guarantee a prescription.</p>
             `,
             contact: `
                 <h2 class="text-2xl font-bold font-display text-gray-900 mb-6">Contact Us</h2>
-                <p class="mb-4 text-sm text-gray-600">For medical questions, please message your provider through the patient portal.</p>
-                <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 mt-4">
-                    <p class="text-sm"><strong>Support:</strong> support@yuccahealth.com</p>
+                <p class="mb-4 text-sm text-gray-600 leading-relaxed">For medical questions, please message your provider through the patient portal.</p>
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 mt-6">
+                    <p class="text-sm mb-2 flex items-center"><span class="material-icons-outlined text-primary mr-2">email</span> <strong>Support:</strong> <a href="mailto:support@yuccahealth.com" class="ml-1 text-primary hover:underline">support@yuccahealth.com</a></p>
+                    <p class="text-xs text-gray-500 mt-4">Response time: Typically within 24 hours.</p>
                 </div>
             `
         };
@@ -565,11 +579,7 @@
         }
 
         // Compliance Logic for "Affiliate" Links
-        // Instead of redirecting immediately, we simulate an internal secure check.
-        // In production, replace the alert with window.location.href = "/your-internal-quiz";
         function handleRegionClick(region) {
-            // alert("In a live environment, this would redirect to your internal HIPAA intake form for " + region + ".");
-            // Example redirect:
              window.location.href = "https://www.fasttrack36.com/PHPWHDRK/2RP3G61B/"; 
         }
 
