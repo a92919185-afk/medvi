@@ -27,7 +27,7 @@
       "name": "Yucca Health",
       "alternateName": "Yucca",
       "url": "https://getyucca.vercel.app/",
-      "logo": "https://getyucca.vercel.app/images/logo.webp",
+      "logo": "https://getyucca.vercel.app/images/medvi-logo.png",
       "description": "Doctor-guided metabolic health and sustainable weight management programs overseen by board-certified physicians.",
       "priceRange": "$$",
       "address": {
@@ -117,7 +117,7 @@
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo Placeholder (Text if image fails) -->
                     <div class="flex items-center">
-                        <img src="images/logo.webp" alt="Yucca Health Logo" class="h-7 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <img src="images/medvi-logo.png" alt="Yucca Health Logo" class="h-8 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                         <span class="hidden font-display font-bold text-2xl text-primary">Yucca<span class="text-gray-800">Health</span></span>
                     </div>
                     
@@ -152,7 +152,7 @@
                         <!-- Product Image Mobile -->
                         <div class="lg:hidden flex justify-center relative mb-10 px-4">
                             <div class="relative w-full max-w-[390px]">
-                                <img src="images/producthero.webp" alt="Yucca Health Personalized Metabolic Plan"
+                                <img src="images/medvi.png" alt="Yucca Health Personalized Metabolic Plan"
                                     class="relative z-10 w-full h-auto drop-shadow-2xl"
                                     onerror="this.src='https://placehold.co/400x400/e6f4f1/2c8566?text=Clinical+Kit'">
                             </div>
@@ -184,7 +184,7 @@
                     <div class="hidden lg:flex justify-center relative">
                         <div class="relative w-full max-w-2xl">
                             <div class="absolute inset-0 bg-primary/10 blur-3xl rounded-full transform scale-90"></div>
-                            <img src="images/producthero.webp" alt="Yucca Health Personalized Metabolic Plan"
+                            <img src="images/medvi.png" alt="Yucca Health Personalized Metabolic Plan"
                                 class="relative z-10 w-full h-auto transform hover:scale-105 transition-transform duration-700 drop-shadow-2xl"
                                 onerror="this.src='https://placehold.co/600x600/e6f4f1/2c8566?text=Clinical+Kit'">
                             <!-- Compliance Caption -->
@@ -221,7 +221,7 @@
 
                 <!-- Country Cards Grid -->
                 <!-- SAFETY CHANGE: Replaced direct affiliate hrefs with onClick handler to simulate internal flow -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
                     <!-- USA -->
                     <div onclick="handleRegionClick('USA')"
@@ -248,53 +248,28 @@
                         </div>
                     </div>
 
-                    <!-- CANADA -->
-                    <div onclick="handleRegionClick('Canada')"
+                    <!-- GLOBAL -->
+                    <div onclick="handleRegionClick('Global')"
                         class="cursor-pointer group bg-white rounded-2xl border-2 border-gray-200 hover:border-primary p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                         <div class="flex justify-center mb-6">
-                            <div class="w-full max-w-[180px] h-28 rounded-xl overflow-hidden border-2 border-gray-100 group-hover:border-primary/30 transition-all shadow-sm">
-                                <svg class="w-full h-full" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="60" height="30" fill="#fff" />
-                                    <rect width="15" height="30" fill="#FF0000" />
-                                    <rect x="45" width="15" height="30" fill="#FF0000" />
-                                    <path d="M30,8 L32,12 L36,11 L34,15 L38,17 L34,18 L35,22 L30,19 L25,22 L26,18 L22,17 L26,15 L24,11 L28,12 Z" fill="#FF0000" />
+                            <div class="w-full max-w-[180px] h-28 rounded-xl overflow-hidden border-2 border-gray-100 group-hover:border-primary/30 transition-all shadow-sm bg-blue-50">
+                                <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="40" fill="#E6F2FF" />
+                                    <!-- Simple globe grid lines -->
+                                    <path d="M50 10 A 40 40 0 0 1 50 90 A 40 40 0 0 1 50 10 M10 50 L90 50" stroke="#4DA3FF" stroke-width="2" fill="none" />
+                                    <ellipse cx="50" cy="50" rx="20" ry="40" stroke="#4DA3FF" stroke-width="2" fill="none" />
+                                    <circle cx="50" cy="50" r="40" stroke="#2C8566" stroke-width="3" fill="none" />
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors">CANADA</h3>
-                        <p class="text-xs text-primary font-bold uppercase tracking-widest">Regional Hub</p>
+                        <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors">GLOBAL</h3>
+                        <p class="text-xs text-primary font-bold uppercase tracking-widest">International Access</p>
                         <div class="mt-6 inline-flex items-center text-sm text-gray-500 group-hover:text-primary transition-colors">
                             <span class="font-semibold">Start Visit</span>
                             <span class="material-icons-outlined ml-1 text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </div>
                     </div>
 
-                    <!-- AUSTRALIA -->
-                    <div onclick="handleRegionClick('Australia')"
-                        class="cursor-pointer group bg-white rounded-2xl border-2 border-gray-200 hover:border-primary p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex justify-center mb-6">
-                            <div class="w-full max-w-[180px] h-28 rounded-xl overflow-hidden border-2 border-gray-100 group-hover:border-primary/30 transition-all shadow-sm">
-                                <svg class="w-full h-full" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="60" height="30" fill="#00008B" />
-                                    <rect width="24" height="15" fill="#00008B" />
-                                    <path d="M0,0 L24,15 M24,0 L0,15" stroke="#fff" stroke-width="3" />
-                                    <path d="M0,0 L24,15 M24,0 L0,15" stroke="#C8102E" stroke-width="1.5" />
-                                    <path d="M12,0 v15 M0,7.5 h24" stroke="#fff" stroke-width="5" />
-                                    <path d="M12,0 v15 M0,7.5 h24" stroke="#C8102E" stroke-width="3" />
-                                    <g fill="#fff">
-                                        <circle cx="48" cy="8" r="1.5" /><circle cx="42" cy="18" r="1" />
-                                        <circle cx="52" cy="22" r="1" /><circle cx="38" cy="25" r="1" />
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors">AUSTRALIA</h3>
-                        <p class="text-xs text-primary font-bold uppercase tracking-widest">Express Evaluation</p>
-                        <div class="mt-6 inline-flex items-center text-sm text-gray-500 group-hover:text-primary transition-colors">
-                            <span class="font-semibold">Start Visit</span>
-                            <span class="material-icons-outlined ml-1 text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Trust Footer -->
@@ -501,7 +476,7 @@
             <div class="flex flex-col items-center">
                 <!-- Logo -->
                 <div class="mb-10 opacity-50">
-                    <img src="images/logo.webp" alt="Yucca Health" class="h-6 w-auto grayscale brightness-200" onerror="this.style.display='none'">
+                    <img src="images/medvi-logo.png" alt="Yucca Health" class="h-6 w-auto grayscale brightness-200" onerror="this.style.display='none'">
                     <span class="font-display font-bold text-xl text-gray-400">Yucca Health</span>
                 </div>
 
@@ -596,7 +571,7 @@
         function handleRegionClick(region) {
             // alert("In a live environment, this would redirect to your internal HIPAA intake form for " + region + ".");
             // Example redirect:
-             window.location.href = "https://www.fasttrack36.com/PHPWHDRK/2T3MTGKN/"; 
+             window.location.href = "https://www.fasttrack36.com/PHPWHDRK/2RP3G61B/"; 
         }
 
         document.addEventListener('keydown', (e) => {
